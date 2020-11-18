@@ -1,0 +1,41 @@
+.intro-section {
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.intro-section h2 {
+    color: var(--main-background-color);
+}
+
+.section-title {
+    background-color: var(--main-background-color);
+    padding: 15px;
+    text-align: center;
+}
+
+.section-title h2 {
+    color: var(--main-background-secondary-color);
+}
+
+article {
+    display: flex;
+}
+
+picture img {
+    width: 1000px;
+    float: right;
+}
+
+.article-body {
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+article {
+    background-color: var(--secondary-background-color);
+}
+
+article:nth-child(odd) {
+    flex-direction: row-reverse;
+}

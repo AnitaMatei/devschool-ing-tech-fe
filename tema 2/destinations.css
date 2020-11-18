@@ -1,0 +1,23 @@
+.section-title {
+    text-align: center;
+}
+
+.section-title h2 {
+    color: var(--main-background-color);
+}
+
+article {
+    display: flex;
+    padding: 2% 10% 2% 10%;
+}
+
+.article-body {
+    background-color: var( --article-background-color);
+    padding-left: 5%;
+    padding-right: 3%;
+}
+
+img {
+    display: block;
+    width: 450px;
+}
