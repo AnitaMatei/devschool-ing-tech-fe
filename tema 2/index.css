@@ -20,11 +20,12 @@
 
 article {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 picture img {
-    width: 1000px;
-    float: right;
+    width: 300px;
 }
 
 .article-body {
@@ -33,9 +34,25 @@ picture img {
 }
 
 article {
-    background-color: var(--secondary-background-color);
+    background-color: var(--article-background-color);
 }
 
-article:nth-child(odd) {
-    flex-direction: row-reverse;
+@media screen and (min-width:600px) {
+    picture img {
+        width: 500px;
+    }
+}
+
+@media screen and (min-width:1600px) {
+    article {
+        display: flex;
+        flex-direction: row;
+    }
+    picture img {
+        width: 1000px;
+        float: right;
+    }
+    article:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
 }
