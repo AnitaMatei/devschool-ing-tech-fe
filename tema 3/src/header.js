@@ -4,7 +4,6 @@ import {
     css
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module"
 
-import "./navbar-item.js"
 
 class Header extends LitElement {
     static get styles() {
@@ -17,7 +16,6 @@ class Header extends LitElement {
             margin: 0;
         }
         
-        
         header {
             background-color: var(--main-background-color);
             text-align: center;
@@ -28,10 +26,30 @@ class Header extends LitElement {
             color: var(--main-background-secondary-color);
         }
         
+        li {
+            border: 1px solid white;
+            margin: 5px;
+            background-color: var(--main-background-color);
+            transition: 0.3s;
+        }
+        
+        li:hover {
+            background-color: var(--main-background-fade-color);
+        }
+        
+        li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px 35px 10px 35px;
+        }
         @media screen and (min-width:1080px) {
             .nav-bar {
                 flex-direction: row;
                 justify-content: center;
+            }
+            li {
+                margin: 45px;
             }
         }
         `;
@@ -64,7 +82,7 @@ class Header extends LitElement {
             <nav>
                 <ul class="nav-bar">
                     ${this.navBarOptions.map( item => html`
-                    <navbar-item .innerHtml = ${item.innerHtml}></navbar-item>
+                    <li>${item.innerHtml}</li>
                     `)}
                 </ul>
             </nav>
