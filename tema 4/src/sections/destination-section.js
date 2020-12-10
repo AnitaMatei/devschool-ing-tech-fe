@@ -49,13 +49,13 @@ class DestinationSection extends LitElement {
     static get properties() {
         return {
             destinationsContents: { type: Array },
-            nrArticles: { type: Number }
+            nrDestinations: { type: Number }
         }
     }
 
     constructor() {
         super()
-        this.nrArticles = 6
+        this.nrDestinations = 6
         this.destinationsContents = []
     }
 
@@ -85,16 +85,16 @@ class DestinationSection extends LitElement {
 
         axios.get(location)
             .then(response =>{
+                
                 let i = 0
                 for (let key in response.data){
-                    if(i>this.nrArticles-1){
+                    if(i > this.nrDestinations-1){
                         break
                     }
                     newDestinationsContents.push(response.data[key])
                     i++
                 }
-                this.nrArticles = i
-
+                this.nrDestinations = i
                 this.destinationsContents = newDestinationsContents
             })
             .catch(error => console.log(error))
@@ -102,7 +102,7 @@ class DestinationSection extends LitElement {
     }
 
     handleClickLoadMore(){
-        this.nrArticles+=6
+        this.nrDestinations+=6
         this.getArticlesContents()
     }
 }
