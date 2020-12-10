@@ -5,7 +5,7 @@ import {
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module"
 
 
-class ArticlePostHome extends LitElement {
+class ArticlePost extends LitElement {
     static get styles() {
         return css `
         
@@ -52,7 +52,7 @@ class ArticlePostHome extends LitElement {
             return html `
         <picture>
             ${this.imageOptions.map((item, idx)=>{
-                if (idx<this.imageOptions.length-1){
+                if (idx < this.imageOptions.length-1){
                     return html`<source media="(min-width:${item.minWidth}px)" srcset=${item.url}>`
                 }
                 return html`<img src=${item.url} alt=${item.alt}>`
@@ -75,4 +75,4 @@ class ArticlePostHome extends LitElement {
 
 }
 
-export default customElements.define('article-post-home', ArticlePostHome)
+export default customElements.define('article-post', ArticlePost)

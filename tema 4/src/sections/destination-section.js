@@ -5,9 +5,9 @@ import {
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module"
 
 
-import "./article-post-destination.js"
+import "./destination-post.js"
 
-class ArticleSectionDestination extends LitElement {
+class DestinationSection extends LitElement {
     static get styles() {
         return css `
         .section-title {
@@ -18,7 +18,7 @@ class ArticleSectionDestination extends LitElement {
             color: var(--main-background-color);
         }
         
-        .article-post {
+        .destination-post {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,7 +36,7 @@ class ArticleSectionDestination extends LitElement {
         }
         
         @media screen and (min-width:1600px) {
-            .article-post {
+            .destination-post {
                 flex-direction: row;
                 align-items: unset;
             }
@@ -48,7 +48,7 @@ class ArticleSectionDestination extends LitElement {
 
     static get properties() {
         return {
-            articlesContents: { type: Array },
+            destinationsContents: { type: Array },
             nrArticles: { type: Number }
         }
     }
@@ -56,7 +56,7 @@ class ArticleSectionDestination extends LitElement {
     constructor() {
         super()
         this.nrArticles = 6
-        this.articlesContents = []
+        this.destinationsContents = []
     }
 
     render() {
@@ -64,8 +64,8 @@ class ArticleSectionDestination extends LitElement {
             <div class="section-title">
             <h2>Best destinations</h2>
         </div>
-                ${this.articlesContents.map(item => html`
-                    <article-post-destination class="article-post" .imageOptions=${item.images} .title=${item.title} .description=${item.description} .moreDetails=${item.moreDetails}></article-post-destination>
+                ${this.destinationsContents.map(item => html`
+                    <destination-post class="destination-post" .imageOptions=${item.images} .title=${item.title} .description=${item.description} .moreDetails=${item.moreDetails}></destination-post>
                 `)}
                 <button @click=${this.handleClickLoadMore}>Load more</button>
             `;
@@ -81,7 +81,7 @@ class ArticleSectionDestination extends LitElement {
         const axios = window.axios
         const location = "https://devschool-2020.firebaseio.com/mateianita/destinations.json"
 
-        let newArticlesContents = []
+        let newDestinationsContents = []
 
         axios.get(location)
             .then(response =>{
@@ -90,12 +90,12 @@ class ArticleSectionDestination extends LitElement {
                     if(i>this.nrArticles-1){
                         break
                     }
-                    newArticlesContents.push(response.data[key])
+                    newDestinationsContents.push(response.data[key])
                     i++
                 }
                 this.nrArticles = i
 
-                this.articlesContents = newArticlesContents
+                this.destinationsContents = newDestinationsContents
             })
             .catch(error => console.log(error))
     
@@ -107,4 +107,4 @@ class ArticleSectionDestination extends LitElement {
     }
 }
 
-customElements.define('article-section-destination', ArticleSectionDestination)
+customElements.define('destination-section', DestinationSection)

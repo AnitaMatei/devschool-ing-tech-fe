@@ -4,9 +4,9 @@ import {
     css
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module"
 
-import "./article-post-home.js"
+import "./article-post.js"
 
-class ArticleSectionHome extends LitElement {
+class ArticleSection extends LitElement {
     static get styles() {
         return css `
         .article-post {
@@ -79,7 +79,7 @@ class ArticleSectionHome extends LitElement {
                     <h2>Perks of travelling</h2>
                 </div>
                 ${this.articlesContents.map(item => html`
-                    <article-post-home class="article-post" .imageOptions=${item.images} .title=${item.title} .subtitle=${item.subtitle} .description=${item.description}></article-post-home>
+                    <article-post class="article-post" .imageOptions=${item.images} .title=${item.title} .subtitle=${item.subtitle} .description=${item.description}></article-post>
                 `)}
                 <button @click=${this.handleClickLoadMore}>Load more</button>
             </section>
@@ -91,7 +91,6 @@ class ArticleSectionHome extends LitElement {
         this.getArticlesContents()
     }
 
-    //requests a "page" of article contents
     getArticlesContents(){
         const axios = window.axios
         const location = "https://devschool-2020.firebaseio.com/mateianita/articles.json"
@@ -102,7 +101,7 @@ class ArticleSectionHome extends LitElement {
             .then(response =>{
                 let i = 0
                 for (let key in response.data){
-                    if(i>this.nrArticles-1){
+                    if(i > this.nrArticles-1){
                         break
                     }
                     newArticlesContents.push(response.data[key])
@@ -121,4 +120,4 @@ class ArticleSectionHome extends LitElement {
     }
 }
 
-customElements.define('article-section-home', ArticleSectionHome)
+customElements.define('article-section', ArticleSection)

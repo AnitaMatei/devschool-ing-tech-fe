@@ -5,7 +5,7 @@ import {
 } from "https://unpkg.com/lit-element@2.4.0/lit-element.js?module"
 
 
-class ArticlePostDestination extends LitElement {
+class DestinationPost extends LitElement {
     static get styles() {
         return css `
         .article-body {
@@ -62,4 +62,4 @@ class ArticlePostDestination extends LitElement {
     }
 }
 
-export default customElements.define('article-post-destination', ArticlePostDestination)
+export default customElements.define('destination-post', DestinationPost)
